@@ -1,0 +1,85 @@
+<div class="drawingTools">
+    <button mat-mini-fab (click)="Draw('Point')" matTooltip="Point" matTooltipPosition="above" [class.activeTool]="activeTool == 'Point'">
+        <i class="material-icons">fiber_manual_record</i>
+    </button>
+    <button mat-mini-fab (click)="Draw('Multipoint')" matTooltip="Multi Point" matTooltipPosition="above"
+        [class.activeTool]="activeTool == 'Multipoint'">
+        <i class="material-icons">bubble_chart</i>
+    </button>
+    <button mat-mini-fab (click)="Draw('Line')" matTooltip="Line" matTooltipPosition="above" [class.activeTool]="activeTool == 'Line'">
+        <i class="material-icons">remove</i>
+    </button>
+    <button mat-mini-fab (click)="Draw('Polyline')" matTooltip="Polyline" matTooltipPosition="above" [class.activeTool]="activeTool == 'Polyline'">
+        <i class="material-icons">show_chart</i>
+    </button>
+    <button mat-mini-fab (click)="Draw('FreehandPolyline')" matTooltip="Freehand Polyline" matTooltipPosition="above"
+        [class.activeTool]="activeTool == 'FreehandPolyline'">
+        <i class="material-icons">gesture</i>
+    </button>
+
+    <button mat-mini-fab (click)="Draw('Triangle')" matTooltip="Triangle" matTooltipPosition="above" [class.activeTool]="activeTool == 'Triangle'">
+        <i class="material-icons">change_history</i>
+    </button>
+
+    <button mat-mini-fab (click)="Draw('Rectangle')" matTooltip="Rectangle" matTooltipPosition="above"
+        [class.activeTool]="activeTool == 'Extent'">
+        <i class="material-icons">crop_din</i>
+    </button>
+    <button mat-mini-fab (click)="Draw('Circle')" matTooltip="Circle" matTooltipPosition="above" [class.activeTool]="activeTool == 'Circle'">
+        <i class="material-icons">panorama_fish_eye</i>
+    </button>
+    <button mat-mini-fab (click)="Draw('Ellipse')" matTooltip="Ellipse" matTooltipPosition="above" [class.activeTool]="activeTool == 'Ellipse'">
+        <i class="material-icons">vignette</i>
+    </button>
+    <button mat-mini-fab (click)="Draw('Polygon')" matTooltip="Polygon" matTooltipPosition="above" [class.activeTool]="activeTool == 'Polygon'">
+        <i class="material-icons">cloud_queue</i>
+    </button>
+    <button mat-mini-fab (click)="Draw('FreehandPolygon')" matTooltip="Freehand Polygon" matTooltipPosition="above"
+        [class.activeTool]="activeTool == 'FreehandPolygon'">
+        <i class="material-icons">all_inclusive</i>
+    </button>
+
+    <button mat-mini-fab (click)="DeactivateToolbar()" matTooltip="Stop" matTooltipPosition="above">
+        <i class="material-icons">not_interested</i>
+    </button>
+</div>
+
+<br />
+
+<div class="textGraphic">
+        <mat-form-field appearance="standard" class="">
+            <input matInput placeholder="Text" type="text" [(ngModel)]="mapText" [formControl]="mapTextCTRL" required>
+            <mat-error *ngIf="mapTextCTRL.hasError('required')">
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" class="">
+            <mat-select placeholder="Size" [(ngModel)]="textSize" [formControl]="textSizeCTRL" required>
+                <mat-option *ngFor="let size of textSizes" [value]="size.value">
+                    {{size.key }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="textSizeCTRL.hasError('required')">
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" class="">
+            <mat-select placeholder="Angel" [(ngModel)]="textAngel" [formControl]="textAngelCTRL" required>
+                <mat-option *ngFor="let angel of textAngles" [value]="angel.value">
+                    <img style="vertical-align:middle;" src="{{angel.img}}" height="25" /> {{angel.key}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="textAngelCTRL.hasError('required') && !(textAngelCTRL.dirty || textAngelCTRL.touched)">
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <input type="color" id="color-picker-link" (ngModelChange)="setColor($event)" [ngModel]="color">
+
+
+        <button mat-raised-button color="primary" [disabled]="!(textSize && mapText && textAngel > -1)" (click)="Draw('point');isText = true;">
+            <i class="material-icons">note_add</i>
+            Add text</button>
+    </div>

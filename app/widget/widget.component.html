@@ -1,0 +1,13 @@
+<div class="widget" cdkDrag *ngIf="isOpen" [style.width]="width" [style.background-color]="backgroundColor"
+    [style.width]="width" [style.height]="height" [style.top]="pointerX" [style.left]="pointerY" >
+    <div class="header" cdkDragHandle>
+        <i class="material-icons close" (click)="onClose()">
+            close
+        </i>
+        <div class="headetTxt">{{title}}</div>
+    </div>
+    <div class="content">
+        <ng-content></ng-content>
+       
+    </div>
+</div>

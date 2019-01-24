@@ -1,0 +1,1 @@
+#floatingmenu{width:320px;height:100%;position:fixed;left:-300px;z-index:99999;background:#000;-webkit-transition:all .7s ease;transition:all .7s ease}#floatingmenu:hover{left:0;-webkit-transition:all .7s ease;transition:all .7s ease}#listcontainer{position:relative;width:100%;margin-top:auto;margin-bottom:auto}#listcontainer ul{width:290px;float:left;color:FFF}

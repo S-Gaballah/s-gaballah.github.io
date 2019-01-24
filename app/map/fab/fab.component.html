@@ -1,0 +1,63 @@
+<div id="container-floating">
+
+    <button (click)="connect()" matTooltip="{{mapService.IsConnected ? 'Disconnect': 'Connect'}}" matTooltipPosition="before"
+        mat-mini-fab [class.connected]="mapService.IsConnected">
+        <mat-icon>{{mapService.IsConnected ? 'pause': 'play_arrow'}}</mat-icon>
+    </button>
+
+    <button (click)="trackPoint()" [disabled]="isHeatmap" matTooltip="Track point" matTooltipPosition="before"
+        mat-mini-fab [class.btnClicked]="isTracking">
+        <mat-icon>navigation</mat-icon>
+    </button>
+
+    <button (click)="enableHeatmap()" [disabled]="isTracking" matTooltipPosition="before" matTooltip="Heat map"
+        mat-mini-fab [class.btnClicked]="isHeatmap">
+        <mat-icon>whatshot</mat-icon>
+    </button>
+
+    <button mat-mini-fab (click)="Identify()" [disabled]="isTracking" matTooltipPosition="before" matTooltip="Identify"
+        mat-mini-fab>
+        <mat-icon>priority_high</mat-icon>
+    </button>
+
+
+
+    <button mat-mini-fab (click)="FullExtent()" matTooltip="Home" matTooltipPosition="before">
+        <mat-icon>home</mat-icon>
+    </button>
+    <button mat-mini-fab (click)="ZoomIn()" matTooltip="Zoom in" matTooltipPosition="before">
+        <mat-icon>add</mat-icon>
+    </button>
+    <button mat-mini-fab (click)="ZoomOut()" matTooltip="Zoom out" matTooltipPosition="before">
+        <mat-icon>remove</mat-icon>
+    </button>
+</div>
+
+<button style="position: absolute;z-index: 50;top: 1em;
+left: 3em;" mat-mini-fab (click)="displayBasemapWidget($event)"
+    matTooltip="basemap" matTooltipPosition="above">
+    <mat-icon>map</mat-icon>
+</button>
+<button style="position: absolute;z-index: 50;top: 1em;
+left: 7em;" mat-mini-fab (click)="displayEditToolbarWidget($event)"
+    matTooltip="Draw & Edit" matTooltipPosition="above">
+    <mat-icon>edit</mat-icon>
+</button>
+
+
+<dragabbale-widget pointerX="{{mouseY + 'px'}}" pointerY="{{mouseX + 'px'}}" [isOpen]="isBasemapOpen" (close)="onBasemapGalleryClose()"
+    (open)="onBasemapGalleryOpen()" width="37.6em" title="Basemap gallery" height="18em">
+    <div #basemapGallaryNode>
+
+    </div>
+</dragabbale-widget>
+
+<dragabbale-widget pointerX="{{mouseY + 'px'}}" pointerY="{{mouseX + 'px'}}" [isOpen]="isEditToolbarOpen" (close)="onEditToolbarClose()"
+    (open)="onEditToolbarOpen()" title="Editing" height="30em">
+
+    <draw [isActive]="isEditToolbarOpen">
+
+    </draw>
+    <div style="text-align: center;">Click on graphics for editing</div>
+    <!-- <button mat-raised-button color="primary">Geo fence</button> -->
+</dragabbale-widget>

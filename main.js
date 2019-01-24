@@ -1,0 +1,1 @@
+System.register(["@angular/platform-browser-dynamic","./app/app.module","@angular/core"],function(e,r){"use strict";var o,t,n;r&&r.id;return{setters:[function(e){o=e},function(e){t=e},function(e){n=e}],execute:function(){n.enableProdMode(),o.platformBrowserDynamic().bootstrapModule(t.AppModule)}}});

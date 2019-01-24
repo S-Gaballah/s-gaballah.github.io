@@ -1,0 +1,58 @@
+<mat-sidenav-container class="wrapper">
+  <mat-sidenav class="mat-sidenav" [mode]="mode" [opened]="isOpened">
+    <mat-card class="mat-card">
+      <div mat-card-header>
+        <img mat-card-image src="app/assets/images/logo.jpg">
+        <mat-card-title>RVT</mat-card-title>
+      </div>
+
+      <mat-card-content>
+        <p>
+          Real Time data from users who use Kuwait finder Mobile Applications
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="ConnectClicked()">Connect</button>
+        <button mat-button color="primary" (click)="DisconnectClicked()">DisConnect</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-nav-list mat-nav-list class="mat-nav-list">
+      <a [routerLink]="['/map']" mat-list-item class="mat-list-item mat-selected">
+        <i class="material-icons" >map</i>
+        <span>Map</span>
+      </a>
+      <a [routerLink]="['/charts']" mat-list-item class="mat-list-item">
+        <i class="material-icons">show_chart</i>
+        <span>Charts</span>
+      </a>
+      <a [routerLink]="['/cv']" mat-list-item class="mat-list-item">
+        <mat-icon class="material-icons">face</mat-icon>
+        <span>Resume</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!--<div class="my-content">
+    <top-toolbar (toggleClicked)="this.isOpened = !this.isOpened"></top-toolbar>
+    <router-outlet></router-outlet>
+  </div>-->
+  <ng-content></ng-content>
+  <!-- <mat-sidenav class="mat-sidenav" align="end" [mode]="rightNavMode" [opened]="isRightNavOpened">
+
+    <table class='table-bordered'>
+      <thead>
+        <th>Attribute</th>
+        <th>Value</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let att of graphicAttributes | mapToIterable">
+          <td>{{att.key}}</td>
+          <td>{{att.value}}</td>
+        </tr>
+      </tbody>
+
+    </table>
+    <button mat-button color="primary" class="mat-button centered" (click)="this.isRightNavOpened = false">Close</button>
+  </mat-sidenav> -->
+</mat-sidenav-container>

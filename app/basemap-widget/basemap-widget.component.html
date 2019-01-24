@@ -1,0 +1,18 @@
+<!-- <div class="widget" cdkDrag *ngIf="isOpen" [style.width]="width" [style.background-color]="backgroundColor"
+    [style.width]="width" [style.height]="height" [style.top]="pointerX" [style.left]="pointerY">
+    <div class="header" cdkDragHandle>
+        <i class="material-icons close" (click)="closeWidget()">
+            close
+        </i>
+        <div>Header</div>
+    </div>
+    <div class="content">
+        <ng-content></ng-content>
+    </div>
+</div> -->
+
+<dragabbale-widget [isOpen]="isOpen" (open)="onOpen()" (close)="onClose()">
+    <div #sssss>
+       
+    </div>
+</dragabbale-widget>

@@ -1,0 +1,1 @@
+System.register(["../app/map/map.component","./cv/cv.component"],function(t,n){"use strict";var e,p;n&&n.id;return{setters:[function(t){e=t},function(t){p=t}],execute:function(){t("appRoutes",[{path:"map",component:e.EsriMapComponent},{path:"cv",component:p.CVComponent},{path:"",redirectTo:"/map",pathMatch:"full"}])}}});

@@ -1,0 +1,85 @@
+<div class="floatingmenu" [class.floatingmenuOpened]="isOpen">
+    <!-- <div id="header" (click)="openPanel()" [class.cursor]="this._esriMapService.LiveUsersCount > 0">
+        <div id="appName">Realtime User Tracking</div>
+    </div> -->
+    <toolbar id="header" (click)="openPanel()" [class.cursor]="this._esriMapService.LiveUsersCount > 0"></toolbar>
+
+    <!-- <div class="row">
+                <ngx-charts-number-card [scheme]="colorScheme" [results]="cards">
+                </ngx-charts-number-card>
+            </div> -->
+    <div class="flex-container">
+            <mat-card class="mat-card flex-item">
+                <div mat-card-header >
+                    <mat-card-title>Active Users</mat-card-title>
+                </div>
+                <mat-card-content>
+                    <div class="chartContainer">
+                        <ngx-charts-bar-vertical   [scheme]="colorScheme" [results]="liveUsers" [gradient]="gradient"
+                            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+                            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+                            (select)="onSelect($event)">
+                        </ngx-charts-bar-vertical>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+      
+            <mat-card class="mat-card flex-item">
+                <div mat-card-header>
+                    <mat-card-title>Total Feeds</mat-card-title>
+                </div>
+                <mat-divider></mat-divider>
+                <mat-card-content>
+                    <div class="chartContainer">
+                        <ngx-charts-pie-grid [view]="view" [scheme]="colorScheme" [results]="totalUsers" (select)="onSelect($event)">
+                        </ngx-charts-pie-grid>
+                        <!--<ngx-charts-bar-vertical [scheme]="colorScheme" [results]="totalUsers" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
+                                        [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+                                        [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+                                    </ngx-charts-bar-vertical>-->
+                    </div>
+                </mat-card-content>
+            </mat-card>
+     
+
+
+
+        <!--<div class="row">-->
+            <mat-card class="mat-card flex-item">
+                <div mat-card-header>
+                    <mat-card-title>O.S Version</mat-card-title>
+                </div>
+                <mat-divider mat-divider></mat-divider>
+                <mat-card-content>
+                    <div  class="chartContainer">
+                        <!-- <ngx-charts-heat-map [view]="view" [scheme]="colorScheme" [results]="osVersions" [legend]="showLegend"
+                            [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
+                            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+                            (select)="onSelect($event)">
+                        </ngx-charts-heat-map> -->
+                        <ngx-charts-bar-horizontal-2d  [view]="view" [scheme]="colorScheme" [results]="osVersions" [legend]="showLegend"
+                        [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [showXAxisLabel]="showXAxisLabel"
+                        [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+                        (select)="onSelect($event)">
+
+                        </ngx-charts-bar-horizontal-2d>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+ 
+            <mat-card class="mat-card flex-item">
+                <div mat-card-header>
+                    <mat-card-title>Android Version</mat-card-title>
+                </div>
+                <mat-divider mat-divider></mat-divider>
+                <mat-card-content>
+                    <div  class="chartContainer">
+                        <ngx-charts-tree-map [scheme]="colorScheme" [results]="osVersions[0].series" (select)="onSelect($event)">
+                        </ngx-charts-tree-map>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    
+
+</div>
